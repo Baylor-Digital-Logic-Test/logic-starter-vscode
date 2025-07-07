@@ -1,0 +1,66 @@
+#! /opt/homebrew/Cellar/icarus-verilog/12.0/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/va_math.vpi";
+S_0x117f04d40 .scope module, "and_gate_tb" "and_gate_tb" 2 3;
+ .timescale -9 -12;
+v0x117f1c340_0 .var "a", 0 0;
+v0x117f1c3e0_0 .var "b", 0 0;
+v0x117f1c490_0 .net "y", 0 0, L_0x117f1c560;  1 drivers
+S_0x117f04eb0 .scope module, "dut" "and_gate" 2 9, 3 1 0, S_0x117f04d40;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "y";
+L_0x117f1c560 .functor OR 1, v0x117f1c340_0, v0x117f1c3e0_0, C4<0>, C4<0>;
+v0x117f08ff0_0 .net "a", 0 0, v0x117f1c340_0;  1 drivers
+v0x117f1c1a0_0 .net "b", 0 0, v0x117f1c3e0_0;  1 drivers
+v0x117f1c240_0 .net "y", 0 0, L_0x117f1c560;  alias, 1 drivers
+    .scope S_0x117f04d40;
+T_0 ;
+    %vpi_call 2 17 "$dumpfile", "sim/waveforms/and_gate.vcd" {0 0 0};
+    %vpi_call 2 18 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x117f04d40 {0 0 0};
+    %vpi_call 2 21 "$display", "Starting AND gate test..." {0 0 0};
+    %vpi_call 2 22 "$display", "Time\011 a b | y" {0 0 0};
+    %vpi_call 2 22 "$fflush" {0 0 0};
+    %vpi_call 2 23 "$display", "---------------------" {0 0 0};
+    %vpi_call 2 23 "$fflush" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x117f1c340_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x117f1c3e0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 27 "$display", "%4t\011 %b %b | %b", $time, v0x117f1c340_0, v0x117f1c3e0_0, v0x117f1c490_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x117f1c340_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x117f1c3e0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 30 "$display", "%4t\011 %b %b | %b", $time, v0x117f1c340_0, v0x117f1c3e0_0, v0x117f1c490_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x117f1c340_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x117f1c3e0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 33 "$display", "%4t\011 %b %b | %b", $time, v0x117f1c340_0, v0x117f1c3e0_0, v0x117f1c490_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x117f1c340_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x117f1c3e0_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 36 "$display", "%4t\011 %b %b | %b", $time, v0x117f1c340_0, v0x117f1c3e0_0, v0x117f1c490_0 {0 0 0};
+    %vpi_call 2 38 "$display", "AND gate test completed." {0 0 0};
+    %vpi_call 2 39 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb/and_gate_tb.v";
+    "src/and_gate.v";
