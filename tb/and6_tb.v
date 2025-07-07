@@ -1,35 +1,36 @@
 `timescale 1ns / 1ps
 
-module and4_tb;
-  reg  [3:0] a, b;
-  wire [3:0] y;
+module and6_tb;
+  reg  [5:0] a, b;
+  wire [5:0] y;
 
   // Instantiate DUT
-  and4 dut (
+  and6 dut (
     .a(a),
     .b(b),
     .y(y)
   );
 
   initial begin
-    $dumpfile("sim/waveforms/and4.vcd");
-    $dumpvars(0, and4_tb);
+    $dumpfile("sim/waveforms/and6.vcd");
+    $dumpvars(0, and6_tb);
 
     $display("Time\t a\t b\t | y");
     $display("--------------------------------");
 
-    a = 4'b0000; b = 4'b0000; #10;
+    a = 6'b000000; b = 6'b000000; #10;
     $display("%4t\t %b\t %b\t | %b", $time, a, b, y);
 
-    a = 4'b1010; b = 4'b0101; #10;
+    a = 6'b101010; b = 6'b010101; #10;
     $display("%4t\t %b\t %b\t | %b", $time, a, b, y);
 
-    a = 4'b1111; b = 4'b1111; #10;
+    a = 6'b111111; b = 6'b111111; #10;
     $display("%4t\t %b\t %b\t | %b", $time, a, b, y);
 
-    a = 4'b1100; b = 4'b1010; #10;
+    a = 6'b110011; b = 6'b101010; #10;
     $display("%4t\t %b\t %b\t | %b", $time, a, b, y);
 
     $finish;
   end
 endmodule
+
